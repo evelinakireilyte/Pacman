@@ -1,0 +1,114 @@
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+  font-size: 60px;
+}
+
+h2 {
+  padding: 7px;
+}
+
+.top-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.lives-box-wrapper,
+.score-box-wrapper {
+  width: 300px;
+  text-align: center;
+  border: 2px solid black;
+  background-color: red;
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+}
+
+.lives-box,
+.score-box {
+  text-align: left;
+  width: 180px;
+  border: 2px solid black;
+  background-color: white;
+}
+
+.grid-wrapper {
+  background-color: bisque;
+  display: flex;
+  justify-content: center;
+}
+
+.grid {
+  height: 1100px;
+  width: 1100px;
+  display: grid;
+  background-color: red;
+  grid-gap: 1px;
+  grid-auto-flow: row;
+  grid-template-columns: repeat(15, 70px);
+  grid-template-rows: repeat(15, 70px);
+  justify-content: center;
+  align-content: center;
+}
+
+.grid-cell {
+  background-color: white;
+  border: 2px solid black;
+  display: flex;
+}
+
+.wall {
+  background-color: blue;
+}
+
+.pac-dot {
+  /* background-image: url("../Pacman/Images/fish-icon-png.jpg"); */
+  background-size: 50px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: white;
+}
+
+.fruit {
+  background-image: url("../Pacman/Images/mouse-icon.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.ghost-home {
+  background-color: white;
+}
+
+.pacmanClass {
+  background-image: url("../Pacman/Images/pac-man-icon-27.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.ghost1 {
+  background-image: url("../Pacman/Images/ghost_1.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.ghost2 {
+  background-image: url("../Pacman/Images/ghost_2.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.ghost3 {
+  background-image: url("../Pacman/Images/ghost_3.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.ghost4 {
+  background-image: url("../Pacman/Images/ghost_4.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
