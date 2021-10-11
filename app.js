@@ -9,9 +9,9 @@ function init() {
         1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1,
         1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1,
         1, 1, 0, 1, 1, 0, 1, 2, 1, 0, 1, 1, 0, 1, 1,
-        1, 1, 0, 1, 1, 0, 1, 2, 1, 0, 1, 1, 0, 1, 1, 
-        0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0,
-        1, 1, 0, 1, 1, 0, 1, 2, 1, 0, 1, 1, 0, 1, 1,
+        1, 1, 0, 1, 1, 0, 0, 2, 0, 0, 1, 1, 0, 1, 1, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        1, 1, 0, 1, 1, 0, 0, 2, 0, 0, 1, 1, 0, 1, 1,
         1, 1, 0, 1, 1, 0, 1, 2, 1, 0, 1, 1, 0, 1, 1, 
         1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1,
         1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1,
@@ -33,20 +33,13 @@ function init() {
     let score = 0
 
 
-    let ghost1StartPosition = 33
-    let ghost2StartPosition = 57
-    let ghost3StartPosition = 144
-    let ghost4StartPosition = 182
-
-
-
     let scoreBoard = document.querySelector('.score-box')
     const startButton = document.querySelector('.start-button')
     const restartButton = document.querySelector('.restart-button')
 
 
 
-// * Make a grid
+// * MAKE THE GRID
     function createGrid() {
         for (let i = 0; i < cellCount; i++) {
             const cell = document.createElement('div')
@@ -55,7 +48,7 @@ function init() {
             gridCells.push(cell)
             cell.classList.add('grid-cell')
 
-         // add layout to the grid
+         // * ADD LAYOUT TO THE GRID
 
             if (gridArray[i] === 0) {
                 gridCells[i].classList.add('pac-dot')
@@ -70,7 +63,7 @@ function init() {
     }    
     createGrid()
 
-// * Add pacman to grid
+// * ADD PACMAN TO THE GRID
 
     function addPacman() {
         gridCells[pacmanCurrentPosition].classList.add('pacmanClass')
@@ -78,7 +71,7 @@ function init() {
     }
     addPacman() // call the function to add the pacman at its starting position
 
-// * Move pacman
+// * MOVE PACMAN
 
     function movePacman() {
 
@@ -116,19 +109,57 @@ function init() {
         dotsCollected()
     }
     
-    // SCORE COUNTING
+// * SCORE COUNTING
 
     function dotsCollected() {
         if(gridCells[pacmanCurrentPosition].classList.contains('pac-dot')) {
             score += 10
             scoreBoard.innerText = score
             gridCells[pacmanCurrentPosition].classList.remove('pac-dot')
-            console.log('score')
         }
     }
     
 
-// // * Add ghost1 to grid
+// * ADD GHOSTS TO THE GRID
+
+class Ghost {
+    constructor(ghostName, ghostPosition, ghostSpeed) {
+        this.ghostName = ghostName
+        this.ghostPosition = ghostPosition
+        this.ghostSpeed = ghostSpeed
+        this.currentGhostPosition = ghostPosition
+    }
+}
+
+ghosts = [
+    new Ghost ('ghost1', 82, 400),
+    new Ghost ('ghost2', 97, 300),
+    new Ghost ('ghost3', 127, 200),
+    new Ghost ('ghost4', 142, 100)
+]
+
+ghosts.forEach(ghost => {
+    gridCells[ghost.currentGhostPosition].classList.add(ghost.ghostName)
+    gridCells[ghost.currentGhostPosition].classList.add('ghost')  
+})
+
+
+// * MOVE GHOSTS        
+ghosts.forEach(ghost => moveGhosts(ghost))
+
+function moveGhosts(ghost) {
+    const directions = [+1, -1, +width, -width]
+    let ghostDirection = directions[Math.floor(Math.random() * directions.length)]
+    
+    if (!gridCells[ghost.currentGhostPosition + ghostDirection].classList.contains('wall') && !gridCells[ghost.currentGhostPosition + ghostDirection].classList.contains('ghost')) {
+        gridCells[ghost.currentGhostPosition].classList.remove(ghost.ghostName, 'ghost')
+        ghost.currentGhostPosition += ghostDirection
+        gridCells[ghost.currentGhostPosition].classList.add(ghost.ghostName, 'ghost')
+
+    } else {
+        ghostDirection = directions[Math.floor(Math.random() * directions.length)]
+    }
+}
 
 //     function addGhost1(position) {
 //         gridCells[position].classList.add('ghost1')
