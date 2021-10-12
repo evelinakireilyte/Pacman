@@ -71,7 +71,7 @@ div h2 {
 }
 
 .pac-dot {
-  background-image: url("../Pacman/Images/fish-icon-png.jpg");
+  background-image: url("../Images/fish-icon-png.jpg");
   background-size: 30px;
   background-repeat: no-repeat;
   background-position: center;
@@ -79,7 +79,7 @@ div h2 {
 }
 
 .fruit {
-  background-image: url("../Pacman/Images/mouse-icon.png");
+  background-image: url("../Images/mouse-icon.png");
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -89,31 +89,31 @@ div h2 {
 }
 
 .pacmanClass {
-  background-image: url("../Pacman/Images/pac-man-icon-27.png");
+  background-image: url("../Images/pac-man-icon-27.png");
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 .ghost1 {
-  background-image: url("../Pacman/Images/ghost_1.jpg");
+  background-image: url("../Images/ghost_1.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 .ghost2 {
-  background-image: url("../Pacman/Images/ghost_2.jpg");
+  background-image: url("../Images/ghost_2.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 .ghost3 {
-  background-image: url("../Pacman/Images/ghost_3.jpg");
+  background-image: url("../Images/ghost_3.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 .ghost4 {
-  background-image: url("../Pacman/Images/ghost_4.jpg");
+  background-image: url("../Images/ghost_4.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }

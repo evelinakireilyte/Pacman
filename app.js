@@ -177,7 +177,6 @@ function init() {
             } else {
                 ghostDirection = directions[Math.floor(Math.random() * directions.length)]
             }
-            gameOverPac()
         }, ghost.ghostSpeed);
 
     }
@@ -211,38 +210,6 @@ function init() {
     // }
 
     
-
-//     function addGhost1(position) {
-//         gridCells[position].classList.add('ghost1')
-//         console.log(position)
-//     }
-//     addGhost1(ghost1StartPosition) 
-
-// // * Add ghost2 to grid
-
-//     function addGhost2(position) {
-//         gridCells[position].classList.add('ghost2')
-//         console.log(position)
-//     }
-//     addGhost2(ghost2StartPosition) 
-
-// // * Add ghost3 to grid
-
-//     function addGhost3(position) {
-//         gridCells[position].classList.add('ghost3')
-//         console.log(position)
-//     }
-//     addGhost3(ghost3StartPosition) 
-
-// // * Add ghost4 to grid
-
-//     function addGhost4(position) {
-//         gridCells[position].classList.add('ghost4')
-//         console.log(position)
-//     }
-//     addGhost4(ghost4StartPosition) 
-
-
     document.addEventListener('keydown', movePacman) 
 
 }
