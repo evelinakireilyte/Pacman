@@ -145,6 +145,18 @@ function init() {
             this.currentGhostPosition = ghostPosition
             this.ghostTimer = NaN
         }
+        gameOverGhost() {
+            if (gridCells[ghost.currentGhostPosition].classList.contains('pacmanClass') && lives >= 1) {
+                lives -= 1
+                livesBoard.innerText = lives
+                console.log('lives lost')
+
+            } else if (gridCells[ghost.currentGhostPosition].classList.contains('pacmanClass') && lives == 0) {
+                livesBoard.innerHTML = 0
+                return window.alert('YOU HAVE LOST. Press START to try again.')
+            }    
+        }
+        
     }
 
     ghosts = [
@@ -177,6 +189,7 @@ function init() {
             } else {
                 ghostDirection = directions[Math.floor(Math.random() * directions.length)]
             }
+            gameOverPac()
         }, ghost.ghostSpeed);
 
     }
@@ -195,21 +208,9 @@ function init() {
         }    
     }
     
-// * LIVE COUNT (if ghost catches pacman ) 
 
-    // function gameOverGhost() {
-    //     if (gridCells[ghost.currentGhostPosition].classList.contains('pacmanClass') && lives >= 1) {
-    //         lives -= 1
-    //         livesBoard.innerText = lives
-    //         console.log('lives lost')
 
-    //     } else if (gridCells[ghost.currentGhostPosition].classList.contains('pacmanClass') && lives == 0) {
-    //         livesBoard.innerHTML = 0
-    //         return window.alert('YOU HAVE LOST. Press START to try again.')
-    //     }    
-    // }
 
-    
     document.addEventListener('keydown', movePacman) 
 
 }
