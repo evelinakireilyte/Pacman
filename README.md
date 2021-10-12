@@ -117,10 +117,10 @@ createGrid()
     }
 
     function addGhosts {
-    cells[position]classList.add(‘ghost1’, ‘ghost1’)
-    cells[position]classList.add(‘ghost1’, ‘ghost2’)
-    cells[position]classList.add(‘ghost1’, ‘ghost3’)
-    cells[position]classList.add(‘ghost1’, ‘ghost4’)
+    cells[position]classList.add(‘ghost1’)
+    cells[position]classList.add(‘ghost2’)
+    cells[position]classList.add(‘ghost3’)
+    cells[position]classList.add(‘ghost4’)
     }
 
     //Remove pacMan from the grid
@@ -197,6 +197,3 @@ return cell.classList.contains(‘free’)
     	document.addEventListener('keydown', function (event)
 
     Extra things to do: Leader Board with name and a top score
-
-
-

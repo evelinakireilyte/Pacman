@@ -7,13 +7,13 @@ function init() {
         1, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 1,
         1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1,
         1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1,
-        1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1,
+        1, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 1,
         1, 1, 0, 1, 1, 0, 1, 2, 1, 0, 1, 1, 0, 1, 1,
         1, 1, 0, 1, 1, 0, 0, 2, 0, 0, 1, 1, 0, 1, 1, 
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         1, 1, 0, 1, 1, 0, 0, 2, 0, 0, 1, 1, 0, 1, 1,
         1, 1, 0, 1, 1, 0, 1, 2, 1, 0, 1, 1, 0, 1, 1, 
-        1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1,
+        1, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 1,
         1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1,
         1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1,
         1, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 1,
@@ -32,12 +32,13 @@ function init() {
 
     let score = 0
 
+    let lives = 3
+
 
     let scoreBoard = document.querySelector('.score-box')
+    let livesBoard = document.querySelector('.lives-box')
     const startButton = document.querySelector('.start-button')
     const restartButton = document.querySelector('.restart-button')
-
-
 
 // * MAKE THE GRID
     function createGrid() {
@@ -47,6 +48,9 @@ function init() {
             grid.appendChild(cell)
             gridCells.push(cell)
             cell.classList.add('grid-cell')
+            
+            livesBoard.innerText = lives
+            scoreBoard.innerText = score
 
          // * ADD LAYOUT TO THE GRID
 
@@ -107,9 +111,11 @@ function init() {
           }
         gridCells[pacmanCurrentPosition].classList.add('pacmanClass')
         dotsCollected()
+        fruitCollected()
+        gameOverPac()
     }
     
-// * SCORE COUNTING
+// * DOT SCORE COUNTING
 
     function dotsCollected() {
         if(gridCells[pacmanCurrentPosition].classList.contains('pac-dot')) {
@@ -119,47 +125,90 @@ function init() {
         }
     }
     
+// * FRUIT SCORE COUNTING
+
+    function fruitCollected() {
+        if(gridCells[pacmanCurrentPosition].classList.contains('fruit')) {
+            score += 50
+            scoreBoard.innerText = score
+            gridCells[pacmanCurrentPosition].classList.remove('fruit')
+        }
+    }     
 
 // * ADD GHOSTS TO THE GRID
 
-class Ghost {
-    constructor(ghostName, ghostPosition, ghostSpeed) {
-        this.ghostName = ghostName
-        this.ghostPosition = ghostPosition
-        this.ghostSpeed = ghostSpeed
-        this.currentGhostPosition = ghostPosition
+    class Ghost {
+        constructor(ghostName, ghostPosition, ghostSpeed) {
+            this.ghostName = ghostName
+            this.ghostPosition = ghostPosition
+            this.ghostSpeed = ghostSpeed
+            this.currentGhostPosition = ghostPosition
+            this.ghostTimer = NaN
+        }
     }
-}
 
-ghosts = [
-    new Ghost ('ghost1', 82, 400),
-    new Ghost ('ghost2', 97, 300),
-    new Ghost ('ghost3', 127, 200),
-    new Ghost ('ghost4', 142, 100)
-]
+    ghosts = [
+        new Ghost ('ghost1', 82, 400),
+        new Ghost ('ghost2', 97, 300),
+        new Ghost ('ghost3', 127, 200),
+        new Ghost ('ghost4', 142, 100)
+    ]
 
-ghosts.forEach(ghost => {
-    gridCells[ghost.currentGhostPosition].classList.add(ghost.ghostName)
-    gridCells[ghost.currentGhostPosition].classList.add('ghost')  
-})
+    ghosts.forEach(ghost => {
+        gridCells[ghost.currentGhostPosition].classList.add(ghost.ghostName)
+        gridCells[ghost.currentGhostPosition].classList.add('ghost')  
+    })
 
 
-// * MOVE GHOSTS        
-ghosts.forEach(ghost => moveGhosts(ghost))
+// * MOVE GHOSTS (setInterval)
 
-function moveGhosts(ghost) {
-    const directions = [+1, -1, +width, -width]
-    let ghostDirection = directions[Math.floor(Math.random() * directions.length)]
+    ghosts.forEach(ghost => moveGhosts(ghost))
+
+    function moveGhosts(ghost) {
+        const directions = [+1, -1, +width, -width]
+        let ghostDirection = directions[Math.floor(Math.random() * directions.length)]
+        
+        ghostTimer = setInterval(function() {
+            if (!gridCells[ghost.currentGhostPosition + ghostDirection].classList.contains('wall') && !gridCells[ghost.currentGhostPosition + ghostDirection].classList.contains('ghost')) {
+                gridCells[ghost.currentGhostPosition].classList.remove(ghost.ghostName, 'ghost')
+                ghost.currentGhostPosition += ghostDirection
+                gridCells[ghost.currentGhostPosition].classList.add(ghost.ghostName, 'ghost')
+                
+            } else {
+                ghostDirection = directions[Math.floor(Math.random() * directions.length)]
+            }
+        }, ghost.ghostSpeed);
+    }
+
+// * LIVE COUNT (if pacman walks into ghost ) 
+
+    function gameOverPac() {
+        if (gridCells[pacmanCurrentPosition].classList.contains('ghost') && lives >= 1) {
+            lives -= 1
+            livesBoard.innerText = lives
+            console.log('lives lost')
+
+        } else if (gridCells[pacmanCurrentPosition].classList.contains('ghost') && lives == 0) {
+            livesBoard.innerHTML = 0
+            return window.alert('YOU HAVE LOST. Press START to try again.')
+        }    
+    }
     
-    if (!gridCells[ghost.currentGhostPosition + ghostDirection].classList.contains('wall') && !gridCells[ghost.currentGhostPosition + ghostDirection].classList.contains('ghost')) {
-        gridCells[ghost.currentGhostPosition].classList.remove(ghost.ghostName, 'ghost')
-        ghost.currentGhostPosition += ghostDirection
-        gridCells[ghost.currentGhostPosition].classList.add(ghost.ghostName, 'ghost')
+// * LIVE COUNT (if ghost catches pacman ) 
 
-    } else {
-        ghostDirection = directions[Math.floor(Math.random() * directions.length)]
+    function gameOverGhost() {
+        if (gridCells[ghost.currentGhostPosition].classList.contains('pacmanClass') && lives >= 1) {
+            lives -= 1
+            livesBoard.innerText = lives
+            console.log('lives lost')
+
+        } else if (gridCells[ghost.currentGhostPosition].classList.contains('pacmanClass') && lives == 0) {
+            livesBoard.innerHTML = 0
+            return window.alert('YOU HAVE LOST. Press START to try again.')
+        }    
     }
-}
+
+    
 
 //     function addGhost1(position) {
 //         gridCells[position].classList.add('ghost1')
