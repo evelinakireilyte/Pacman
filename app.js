@@ -177,7 +177,9 @@ function init() {
             } else {
                 ghostDirection = directions[Math.floor(Math.random() * directions.length)]
             }
+            gameOverPac()
         }, ghost.ghostSpeed);
+
     }
 
 // * LIVE COUNT (if pacman walks into ghost ) 
@@ -196,17 +198,17 @@ function init() {
     
 // * LIVE COUNT (if ghost catches pacman ) 
 
-    function gameOverGhost() {
-        if (gridCells[ghost.currentGhostPosition].classList.contains('pacmanClass') && lives >= 1) {
-            lives -= 1
-            livesBoard.innerText = lives
-            console.log('lives lost')
+    // function gameOverGhost() {
+    //     if (gridCells[ghost.currentGhostPosition].classList.contains('pacmanClass') && lives >= 1) {
+    //         lives -= 1
+    //         livesBoard.innerText = lives
+    //         console.log('lives lost')
 
-        } else if (gridCells[ghost.currentGhostPosition].classList.contains('pacmanClass') && lives == 0) {
-            livesBoard.innerHTML = 0
-            return window.alert('YOU HAVE LOST. Press START to try again.')
-        }    
-    }
+    //     } else if (gridCells[ghost.currentGhostPosition].classList.contains('pacmanClass') && lives == 0) {
+    //         livesBoard.innerHTML = 0
+    //         return window.alert('YOU HAVE LOST. Press START to try again.')
+    //     }    
+    // }
 
     
 
@@ -239,12 +241,6 @@ function init() {
 //         console.log(position)
 //     }
 //     addGhost4(ghost4StartPosition) 
-
-
-
-
-
-
 
 
     document.addEventListener('keydown', movePacman) 
