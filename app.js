@@ -80,7 +80,6 @@ function init() {
             }
         }   
 
-        gridCells[ghost.currentGhostPosition].classList.remove('ghost')  
     }
 
 
@@ -90,6 +89,10 @@ function init() {
         gridCells[pacmanCurrentPosition].classList.add('pacmanClass')
     }
     addPacman() // call the function to add the pacman at its starting position
+
+    function removePacman () {
+        gridCells[pacmanCurrentPosition].classList.remove('pacmanClass')
+    }
 
 
 // * PLAY THE GAME  -  when start button is pressed
@@ -104,7 +107,8 @@ function init() {
 // * MOVE PACMAN
 
     function movePacman() {
-
+        let pacImg = document.querySelector('.pacmanClass')
+        pacImg.setAttribute('style','transform:rotate(360deg)')
         gridCells[pacmanCurrentPosition].classList.remove('pacmanClass')
 
         switch (event.key) {
@@ -180,17 +184,18 @@ function init() {
             this.currentGhostPosition = ghostPosition
             this.ghostTimer = NaN
         }
-        livesLostG() {
-            if (gridCells[ghost.currentGhostPosition].classList.contains('pacmanClass') && lives >= 1) {
-                lives -= 1
-                livesBoard.innerText = lives
-                console.log('lives lost')
+        // livesLostG() {
+        //     if (gridCells[ghost.currentGhostPosition].classList.contains('pacmanClass') && lives >= 1) {
+        //         lives -= 1
+        //         livesBoard.innerText = lives
+        //         console.log('lives lost')
 
-            } else if (gridCells[ghost.currentGhostPosition].classList.contains('pacmanClass') && lives == 0) {
-                livesBoard.innerHTML = 0
-                return window.alert('YOU HAVE LOST. Press START to try again.')
-            }    
-        }
+        //     } else if (gridCells[ghost.currentGhostPosition].classList.contains('pacmanClass') && lives == 0) {
+        //         livesBoard.innerHTML = 0
+        //         stopGhosts() 
+        //         return window.alert('YOU HAVE LOST. Press START to try again.')
+        //     }    
+        // }
         
     }
 
@@ -213,7 +218,7 @@ function init() {
         const directions = [+1, -1, +width, -width]
         let ghostDirection = directions[Math.floor(Math.random() * directions.length)]
         
-        ghostTimer = setInterval(function() {
+        ghost.ghostTimer = setInterval(function() {
             if (!gridCells[ghost.currentGhostPosition + ghostDirection].classList.contains('wall') && !gridCells[ghost.currentGhostPosition + ghostDirection].classList.contains('ghost')) {
                 gridCells[ghost.currentGhostPosition].classList.remove(ghost.ghostName, 'ghost')
                 ghost.currentGhostPosition += ghostDirection
@@ -233,10 +238,15 @@ function init() {
         if (gridCells[pacmanCurrentPosition].classList.contains('ghost') && lives >= 1) {
             lives -= 1
             livesBoard.innerText = lives
-            console.log('lives lost')
 
+            removePacman()
+            pacmanCurrentPosition = 106
+            addPacman()
+            
         } else if (gridCells[pacmanCurrentPosition].classList.contains('ghost') && lives == 0) {
             livesBoard.innerHTML = 0
+            stopGhosts()
+
             return window.alert('YOU HAVE LOST. Press START to try again.')
         }   
     }
@@ -273,12 +283,22 @@ function init() {
         pacmanCurrentPosition = 106
         gridCells[pacmanCurrentPosition].classList.add('pacmanClass')
 
+        for(let ghost of ghosts){
+            gridCells[ghost.currentGhostPosition].classList.remove(ghost.ghostName, 'ghost') 
+        }
         scoreBoard.innerText = 0
         livesBoard.innerText = 3
 
         resetGrid()
     }
     
+    function stopGhosts() { 
+        for (let ghost of ghosts) {
+            clearInterval(ghost.ghostTimer)
+        }
+    }
+
+
 //  * AUDIO PLAY FUNCTION
 
     function mainAudio() {
