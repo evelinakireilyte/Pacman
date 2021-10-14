@@ -23,7 +23,6 @@ function init() {
         // 1 - wall
         // 2 - ghost home
         // 3 - fruit/mice
-        // 4 - empty 
     
     let grid = document.querySelector('.grid')
     const gridCells = []
@@ -31,18 +30,23 @@ function init() {
     let pacmanCurrentPosition = 106 
 
     let score = 0
+    
     let lives = 3
+    let highScore = localStorage.getItem('game1HighScore') || 0
 
     let scoreBoard = document.querySelector('.score-box')
+    let highScoreBoard = document.querySelector('.top-score-display')
     let livesBoard = document.querySelector('.lives-box')
     const startButton = document.querySelector('.start-button')
     const restartButton = document.querySelector('.restart-button')
+
+    
 
 // * MAKE THE GRID
     function createGrid() {
         for (let i = 0; i < cellCount; i++) {
             const cell = document.createElement('div')
-            cell.innerText = i 
+            cell.innerText = "" 
             grid.appendChild(cell)
             gridCells.push(cell)
             cell.classList.add('grid-cell')
@@ -59,11 +63,12 @@ function init() {
             } else if (gridArray[i] === 3) {
                 gridCells[i].classList.add('fruit')
             }
-        }    
+        }  
+
     }
     createGrid()
 
-//  * GAME RESET
+//  * GRID RESET
 
     function resetGrid() {
         for (let i = 0; i < cellCount; i++) {
@@ -82,7 +87,6 @@ function init() {
 
     }
 
-
 // * ADD PACMAN TO THE GRID
 
     function addPacman() {
@@ -90,6 +94,7 @@ function init() {
     }
     addPacman() // call the function to add the pacman at its starting position
 
+// * REMOVE PACMAN FROM THE GRID
     function removePacman () {
         gridCells[pacmanCurrentPosition].classList.remove('pacmanClass')
     }
@@ -100,9 +105,10 @@ function init() {
     function playGame() {
         ghosts.forEach(ghost => moveGhosts(ghost))
         document.addEventListener('keydown', movePacman)
+
+        ghosts.forEach(ghost => ghost.resetToInitialPosition())
         // mainAudio()
     }
-
 
 // * MOVE PACMAN
 
@@ -146,12 +152,13 @@ function init() {
                     pacmanCurrentPosition = 105
                 }
                 break
-          }
+        }
         gridCells[pacmanCurrentPosition].classList.add('pacmanClass')
         dotsCollected()
         fruitCollected()
         livesLostP()
         playerWins()
+        checkHighScore()
     }
     
 // * DOT SCORE COUNTING
@@ -179,26 +186,19 @@ function init() {
     class Ghost {
         constructor(ghostName, ghostPosition, ghostSpeed) {
             this.ghostName = ghostName
-            this.ghostPosition = ghostPosition
+            this.initialGhostPosition = ghostPosition
             this.ghostSpeed = ghostSpeed
             this.currentGhostPosition = ghostPosition
             this.ghostTimer = NaN
         }
-        // livesLostG() {
-        //     if (gridCells[ghost.currentGhostPosition].classList.contains('pacmanClass') && lives >= 1) {
-        //         lives -= 1
-        //         livesBoard.innerText = lives
-        //         console.log('lives lost')
 
-        //     } else if (gridCells[ghost.currentGhostPosition].classList.contains('pacmanClass') && lives == 0) {
-        //         livesBoard.innerHTML = 0
-        //         stopGhosts() 
-        //         return window.alert('YOU HAVE LOST. Press START to try again.')
-        //     }    
-        // }
+        resetToInitialPosition () {
+            this.currentGhostPosition = this.initialGhostPosition
+        }
         
     }
 
+    
     ghosts = [
         new Ghost ('ghost1', 82, 400),
         new Ghost ('ghost2', 97, 300),
@@ -212,7 +212,6 @@ function init() {
     })
 
 // * MOVE GHOSTS
-
 
     function moveGhosts(ghost) {
         const directions = [+1, -1, +width, -width]
@@ -232,7 +231,7 @@ function init() {
 
     }
 
-// * LIVES COUNTER (if pacman walks into ghost ) 
+// * LIVES COUNTER 
 
     function livesLostP() {
         if (gridCells[pacmanCurrentPosition].classList.contains('ghost') && lives >= 1) {
@@ -247,7 +246,7 @@ function init() {
             livesBoard.innerHTML = 0
             stopGhosts()
 
-            return window.alert('YOU HAVE LOST. Press START to try again.')
+            return window.alert('YOU HAVE LOST. Press RESET and START to try again.')
         }   
     }
     
@@ -276,22 +275,28 @@ function init() {
         }
     }        
 
-    // GAME RESET FUNCTIONS:
+    // * RESTART THE GAME:
 
     function resetGame() {
         gridCells[pacmanCurrentPosition].classList.remove('pacmanClass')
         pacmanCurrentPosition = 106
         gridCells[pacmanCurrentPosition].classList.add('pacmanClass')
 
+        stopGhosts()
+
         for(let ghost of ghosts){
             gridCells[ghost.currentGhostPosition].classList.remove(ghost.ghostName, 'ghost') 
         }
+
         scoreBoard.innerText = 0
         livesBoard.innerText = 3
 
         resetGrid()
     }
     
+
+//  * STOP GHOSTS
+
     function stopGhosts() { 
         for (let ghost of ghosts) {
             clearInterval(ghost.ghostTimer)
@@ -307,11 +312,23 @@ function init() {
         audio1.play()
     }
 
+// * HIGHEST SCORE STORAGE
+
+    highScoreBoard.innerText = highScore
+
+    function checkHighScore() {
+        if(score > localStorage.getItem('game1HighScore')) {
+            localStorage.setItem('game1HighScore', score)
+            highScore = score
+            highScoreBoard.innerText = highScore
+            console.log('highest score')
+        }
+    }
+
     startButton.addEventListener('click', playGame)
     restartButton.addEventListener('click', resetGame)
 
 }
-
 
 
 window.addEventListener('DOMContentLoaded', init)

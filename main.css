@@ -25,7 +25,7 @@ div h2 {
   height: 60px;
   text-align: center;
   border: 2px solid black;
-  background-color: red;
+  background-color: rgba(255, 0, 0, 0.788);
   display: flex;
   flex-direction: row;
   justify-content: right;
@@ -53,8 +53,7 @@ div h2 {
   height: 930px;
   width: 930px;
   display: grid;
-  background-color: red;
-  grid-gap: 1px;
+  background-color: rgba(255, 0, 0, 0.788);
   grid-auto-flow: row;
   grid-template-columns: repeat(15, 60px);
   grid-template-rows: repeat(15, 60px);
@@ -70,11 +69,11 @@ div h2 {
 }
 
 .wall {
-  background-color: blue;
+  background-color: rgb(24, 27, 236);
 }
 
 .pac-dot {
-  background-image: url("../Images/fish-icon-png.jpg");
+  background-image: url("../Images/gold-coin.jpg");
   background-size: 30px;
   background-repeat: no-repeat;
   background-position: center;
@@ -82,7 +81,7 @@ div h2 {
 }
 
 .fruit {
-  background-image: url("../Images/mouse-icon.png");
+  background-image: url("../Images/cherries.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -97,44 +96,26 @@ div h2 {
   background-repeat: no-repeat;
 }
 
-.pacmanClassLeft {
-  background-image: url("../Images/pac-man-icon-27_LEFT.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.pacmanClassUp {
-  background-image: url("../Images/pac-man-icon-27_UP.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.pacmanClassDown {
-  background-image: url("../Images/pac-man-icon-27_DOWN.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
 .ghost1 {
-  background-image: url("../Images/ghost_1.jpg");
+  background-image: url("../Images/red-ghost.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 .ghost2 {
-  background-image: url("../Images/ghost_2.jpg");
+  background-image: url("../Images/yellow-ghost.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 .ghost3 {
-  background-image: url("../Images/ghost_3.jpg");
+  background-image: url("../Images/blue.png");
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 .ghost4 {
-  background-image: url("../Images/ghost_4.jpg");
+  background-image: url("../Images/green.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -142,7 +123,7 @@ div h2 {
 button {
   height: 60px;
   width: 300px;
-  background-color: red;
+  background-color: rgba(255, 0, 0, 0.788);
   color: black;
   font-size: 25px;
   border: black 2px solid;
