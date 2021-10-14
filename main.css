@@ -4,12 +4,12 @@
 
 h1 {
   text-align: center;
-  font-size: 60px;
+  font-size: 30px;
 }
 
 div h2 {
-  margin: 10px;
-  font-size: 25px;
+  margin: 5px;
+  font-size: 15px;
   text-align: center;
 }
 
@@ -22,26 +22,26 @@ div h2 {
 .lives-box-wrapper,
 .score-box-wrapper,
 .top-score-wrapper {
-  height: 60px;
+  height: 30px;
   text-align: center;
-  border: 2px solid black;
+  border: 1px solid black;
   background-color: rgba(255, 0, 0, 0.788);
   display: flex;
   flex-direction: row;
   justify-content: right;
-  margin: 20px 50px;
-  padding: 7px;
+  margin: 10px 25px;
 }
 
 .lives-box,
 .score-box,
 .top-score-display {
   text-align: left;
-  width: 100px;
-  border: 2px solid black;
+  width: 50px;
+  border: 1px solid black;
   background-color: white;
-  font-size: 35px;
+  font-size: 15px;
   text-align: center;
+  padding-top: 5px;
 }
 
 .grid-wrapper {
@@ -50,21 +50,21 @@ div h2 {
 }
 
 .grid {
-  height: 930px;
-  width: 930px;
+  height: 465px;
+  width: 465px;
   display: grid;
   background-color: rgba(255, 0, 0, 0.788);
   grid-auto-flow: row;
-  grid-template-columns: repeat(15, 60px);
-  grid-template-rows: repeat(15, 60px);
+  grid-template-columns: repeat(15, 30px);
+  grid-template-rows: repeat(15, 30px);
   justify-content: center;
   align-content: center;
-  border: black 2px solid;
+  border: black 1px solid;
 }
 
 .grid-cell {
   background-color: white;
-  border: 2px solid black;
+  border: 1px solid black;
   display: flex;
 }
 
@@ -74,7 +74,7 @@ div h2 {
 
 .pac-dot {
   background-image: url("./Images/gold-coin.jpg");
-  background-size: 30px;
+  background-size: 15px;
   background-repeat: no-repeat;
   background-position: center;
   background-color: white;
@@ -121,12 +121,12 @@ div h2 {
 }
 
 button {
-  height: 60px;
-  width: 300px;
+  height: 30px;
+  width: 150px;
   background-color: rgba(255, 0, 0, 0.788);
   color: black;
-  font-size: 25px;
-  border: black 2px solid;
+  font-size: 15px;
+  border: black 1px solid;
 }
 
 .controls {
@@ -138,6 +138,5 @@ button {
 .start-button,
 .restart-button,
 .audio-mute {
-  margin: 20px 5px;
-  padding: 7px;
+  margin: 10px 5px;
 }
