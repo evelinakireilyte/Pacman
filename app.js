@@ -39,6 +39,8 @@ function init() {
     let livesBoard = document.querySelector('.lives-box')
     const startButton = document.querySelector('.start-button')
     const restartButton = document.querySelector('.restart-button')
+    const audio1 = document.getElementById('myAudio')
+    const audioMute = document.querySelector('.audio-mute')
 
     
 
@@ -107,7 +109,7 @@ function init() {
         document.addEventListener('keydown', movePacman)
 
         ghosts.forEach(ghost => ghost.resetToInitialPosition())
-        // mainAudio()
+        mainAudio()
     }
 
 // * MOVE PACMAN
@@ -307,7 +309,6 @@ function init() {
 //  * AUDIO PLAY FUNCTION
 
     function mainAudio() {
-        const audio1 = document.getElementById('myAudio')
         audio1.volume = 0.05
         audio1.play()
     }
@@ -325,8 +326,14 @@ function init() {
         }
     }
 
+    function gameAudioMute() {
+        audio1.volume = 0
+        audio1.play()
+    }
+
     startButton.addEventListener('click', playGame)
     restartButton.addEventListener('click', resetGame)
+    audioMute.addEventListener('click', gameAudioMute)
 
 }
 

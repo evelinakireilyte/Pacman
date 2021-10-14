@@ -136,7 +136,8 @@ button {
 }
 
 .start-button,
-.restart-button {
-  margin: 20px 50px;
+.restart-button,
+.audio-mute {
+  margin: 20px 5px;
   padding: 7px;
 }
