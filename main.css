@@ -73,7 +73,7 @@ div h2 {
 }
 
 .pac-dot {
-  background-image: url("../Images/gold-coin.jpg");
+  background-image: url("./Images/gold-coin.jpg");
   background-size: 30px;
   background-repeat: no-repeat;
   background-position: center;
@@ -81,7 +81,7 @@ div h2 {
 }
 
 .fruit {
-  background-image: url("../Images/cherries.jpg");
+  background-image: url("./Images/cherries.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -91,31 +91,31 @@ div h2 {
 }
 
 .pacmanClass {
-  background-image: url("../Images/pac-man-icon-27.png");
+  background-image: url("./Images/pac-man-icon-27.png");
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 .ghost1 {
-  background-image: url("../Images/red-ghost.jpeg");
+  background-image: url("./Images/red-ghost.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 .ghost2 {
-  background-image: url("../Images/yellow-ghost.jpeg");
+  background-image: url("./Images/yellow-ghost.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 .ghost3 {
-  background-image: url("../Images/blue.png");
+  background-image: url("./Images/blue.png");
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 .ghost4 {
-  background-image: url("../Images/green.jpeg");
+  background-image: url("./Images/green.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
 }
