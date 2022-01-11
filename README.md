@@ -104,12 +104,15 @@ Game design:
 
 Implemented grid, defined maze layout, location of maze pieces and cherries. Each grid cell in the grid array was given a number which represented either a dot, wall, ghost home or fruit. This was then used to loop through each list item in the grid array and assign different classes containing appropriate formatting, providing the grid with a finished maze structure.
 
-<img src="https://res.cloudinary.com/eevelynaa1/image/upload/v1641828290/pacman_2_zxfevz.png" height="500"> 
-<img src="https://res.cloudinary.com/eevelynaa1/image/upload/v1641828295/pacman_3_zpswuf.png" height="500">
+#### Code Snippet - Maze implementation and layout
+
+<img src="https://res.cloudinary.com/eevelynaa1/image/upload/v1641828290/pacman_2_zxfevz.png" height="500"> <img src="https://res.cloudinary.com/eevelynaa1/image/upload/v1641828295/pacman_3_zpswuf.png" height="500">
 
 ### Day 3-7 Pac-Man and ghost movement:
 
 The next logical step was to implement Pac-Man and ghosts. I have first added the Pac-Man to the grid by assigning a class to the specific grid cell. Knowing the game will be arrow key controlled, I have used the switch statement to determine which direction will be taken depending on the arrow key pressed. The current Pac-Man position on the grid was used to determine how Pac-Man responds to arrow keys, while visual movement was achieved by adding and removing classes as Pac-Man current position on the grid is overwritten each time a key is pressed. Pac-Man's image was set to rotate towards the direction it is taking.
+
+#### Code Snippet - Pac-Man movement on the grid
 
 <img src="https://res.cloudinary.com/eevelynaa1/image/upload/v1641828295/pacman_4_ypnau1.png" width="400">
 <br>
@@ -120,6 +123,8 @@ Ghosts were added to four different locations on the grid. Ghost movement was ra
 ### Day 7 - Game info displays:
 
 Implemented score, lives counter and displays. Everytime Pac-Man's current position on the grid contains a class “pac-dot”, 10 points are added onto the score variable and the “pac-dot” class gets removed, making it look as if it has already been collected. Score is then displayed on the scoreboard. Highest score was saved to local storage and displayed on the board too. Same logic was used to count cherry points and lives.
+
+#### Code Snippet - (Highest) score counting and display
 
 <img src="https://res.cloudinary.com/eevelynaa1/image/upload/v1641828295/pacman_6_fl1uuu.png" width="400">
 <br>
