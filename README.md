@@ -21,9 +21,8 @@
 
 ## Project Overview
 
-Pac-Man is a 1980’s maze action game. The player controls Pac-Man, eating all the dots inside an enclosed maze while avoiding four ghosts.
-
-Many different versions of Pac-Man have been built as a way to learn and solidify programming basics and establish logical approach for implementation. Classic Pac-man was my first project as part of General Assembly's Software Engineering Immersive (SEI) course. It was a solo project built in 9 days implementing the skills learned over the first three weeks of the SEI program.
+Pac-Man is a 1980’s maze action game. The player controls Pac-Man, eating all the dots inside an enclosed maze while avoiding four ghosts. Classic Pac-man was my first project as part of General Assembly's Software Engineering Immersive (SEI) course. It was a solo project built in 9 days implementing the skills learned over the first three weeks of the SEI program.
+Many different versions of Pac-Man have been built as a way to learn and solidify programming basics and establish a logical approach for implementation. 
 
 ## Deployment:
 
@@ -36,25 +35,25 @@ The game has been deployed with GitHub Pages and is available [here](https://eve
 
 ## Controls and Instructions
 
-- Launch the game
-- Click the Start button to start the game
-- Click Reset button followed by Start button to reset the game and start a new one
-- Click Mute button to mute the music playing in the background
+- Launch the game.
+- Click the Start button to start the game.
+- Click Reset button followed by Start button to reset the game and start a new one.
+- Click Mute button to mute the music playing in the background.
 - Use left, right, up and down arrow keys on your keyboard to control Pac-Man movement direction.
-- Avoiding ghosts, collect maze pieces and fruit to earn points
+- Avoiding ghosts, collect maze pieces and fruit to earn points.
 - Observe the current score, top score and the number of lives remaining in the display at the top of the grid.
 
 ## Game Brief:
 
-- Build a grid based game in 9 days
-- Create a one-player game against the computer, Pac-Man vs four ghosts
-- Design a maze with restricted zones, dots and cherries
-- Create four randomly moving ghosts
-- Create player controlled Pac-Man
-- Design logic for winning and losing
-- Display score and number of lives on the screen
-- Include separate HTML, CSS and JavaScript files
-- Deploy the game
+- Build a grid based game in 9 days.
+- Create a one-player game against the computer, Pac-Man vs four ghosts.
+- Design a maze with restricted zones, dots and cherries.
+- Create four randomly moving ghosts.
+- Create player controlled Pac-Man..
+- Design logic for winning and losing.
+- Display score and number of lives on the screen.
+- Include separate HTML, CSS and JavaScript files.
+- Deploy the game.
 
 ## Technologies Used:
 
@@ -69,11 +68,11 @@ The game has been deployed with GitHub Pages and is available [here](https://eve
 
 ### Timeline:
 
-- Day 1 - Project planning
-- Day 2-3 - Grid implementation
-- Day 3-7 - Pac-Man and ghost movement
-- Day 7 - Game info displays
-- Day 8 - Game reset function and styling
+- Day 1 - Project planning.
+- Day 2-3 - Grid implementation.
+- Day 3-7 - Pac-Man and ghost movement.
+- Day 7 - Game info displays.
+- Day 8 - Game reset function and styling.
 
 ### Day 1 - Project planning:
 
@@ -137,13 +136,13 @@ During the final day, I have implemented a reset function to allow players to re
 ## Bugs
 
 - Pac-Man rotates upside down when moving to the left. I would look into setting an image mirror transformation instead of rotating the image.
-- Occasional Pac-Man duplication takes place as Pac-Man moves from one end of the maze to another. I would aim to review and reset Pac-Man current position as it migrates from one end to another ‘behind the scenes’
+- Occasional Pac-Man duplication takes place as Pac-Man moves from one end of the maze to another. I would aim to review and reset Pac-Man's current position as it migrates from one end to another ‘behind the scenes’.
 
 ## Challenges
 
-- Resetting the game instead of re-rendering the browser required to reset all previously defined variables to their primary state
+- Resetting the game instead of re-rendering the browser required to reset all previously defined variables to their primary state.
 - Implementing Pac-Man movement and other features that were closely linked to it seemed overwhelming at the start.
-- Task prioritisation - working on the features necessary to build a functioning app
+- Task prioritisation - working on the features necessary to build a functioning app.
 
 ## Wins and Key Learnings
 
@@ -151,6 +150,6 @@ Implemented features such as highest score storage by researching different opti
 
 ## Future Improvements
 
-- Improve styling and change background music
-- Implement differently themed levels
-- Make ghosts chase Pac-Man to increase difficulty level
+- Improve styling and change background music.
+- Implement differently themed levels.
+- Make ghosts chase Pac-Man to increase difficulty level.
